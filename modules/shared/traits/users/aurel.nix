@@ -13,16 +13,9 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
-      users.users.aurel.shell = pkgs.fish;
-
-      programs.fish.enable = true;
-
+      home-manager.backupFileExtension = "backup";
       home-manager.users.aurel = {
-        imports = [(inputs.self + "/users/aurel")];
-        aurel = {
-          enable = true;
-          shell.fish.enable = true;
-        };
+        imports = [(inputs.self + "/users/aurel/home.nix")];
       };
     })
 

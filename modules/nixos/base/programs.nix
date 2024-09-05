@@ -8,7 +8,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       git.enable = true;
-      vim.defaultEditor = true;
+      vim.enable = true;
     };
   };
 }

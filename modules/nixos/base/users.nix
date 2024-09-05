@@ -48,8 +48,7 @@ in {
         };
       })
 
-      
-         (lib.mkIf (cfg.defaultRoot.enable && cfg.defaultRoot.manageSecrets) {
+      (lib.mkIf (cfg.defaultRoot.enable && cfg.defaultRoot.manageSecrets) {
         age.secrets = {
           rootPassword.file = secretsDir + "/rootPassword.age";
         };
@@ -58,7 +57,6 @@ in {
           hashedPasswordFile = config.age.secrets.rootPassword.path;
         };
       })
-      
     ]
   );
 }

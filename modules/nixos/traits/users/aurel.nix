@@ -3,11 +3,9 @@
   lib,
   secretsDir,
   ...
-}: 
-let
-cfg = traits.users.aurel;
-in
-{
+}: let
+  cfg = traits.users.aurel;
+in {
   options.traits.users.aurel = {
     manageSecrets =
       lib.mkEnableOption "automatic management of secrets"
@@ -18,8 +16,7 @@ in
   };
 
   config = lib.mkMerge [
-    
-       (lib.mkIf (cfg.enable && cfg.manageSecrets) {
+    (lib.mkIf (cfg.enable && cfg.manageSecrets) {
       age.secrets = {
         aurelPassword.file = secretsDir + "/aurelPassword.age";
       };
@@ -28,6 +25,5 @@ in
         hashedPasswordFile = lib.mkDefault config.age.secrets.aurelPassword.path;
       };
     })
-  
   ];
 }

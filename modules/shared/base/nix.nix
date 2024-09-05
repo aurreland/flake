@@ -39,9 +39,6 @@ in {
             || lib.versionAtLeast config.nix.package.version "2.90.0" # but not in lix yet
           ) "repl-flake";
 
-        trusted-substituters = ["https://getchoo.cachix.org"];
-        trusted-public-keys = ["getchoo.cachix.org-1:ftdbAUJVNaFonM0obRGgR5+nUmdLMM+AOvDOSx0z5tE="];
-
         nix-path = config.nix.nixPath;
       };
 

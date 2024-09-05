@@ -25,7 +25,7 @@
       settings = {
         console-mode = "auto";
         editor = false;
-        timeout = 0;
+        timeout = 60;
       };
     };
 

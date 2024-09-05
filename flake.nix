@@ -9,6 +9,7 @@
         ./dev
         ./lib
         ./modules
+        ./pkgs
         ./systems
         ./users
       ];
@@ -56,6 +57,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix.url = "github:danth/stylix";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

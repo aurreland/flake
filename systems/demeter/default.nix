@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./boot.nix
-    # ./disko.nix
     ./hardware-configuration.nix
   ];
 
@@ -10,14 +9,18 @@
   desktop = {
     enable = true;
     gnome.enable = true;
+    niri.enable = true;
+    stylix.enable = true;
   };
 
-  base.nixSettings = {
-    enable = true;
-    lix.enable = true;
+  base = {
+    nixSettings = {
+      enable = true;
+      lix.enable = true;
+    };
   };
 
-  environment.systemPackages = [pkgs.neovim];
+  environment.systemPackages = [pkgs.neovim pkgs.home-manager];
 
   users.users.aurel.initialPassword = "test";
   networking.hostName = "demeter";
@@ -28,24 +31,22 @@
     fwupd.enable = true;
   };
 
-  system.stateVersion = "23.11";
-
   traits = {
     users.aurel = {
       enable = true;
-      #manageSecrets = false;
+      # manageSecrets = false;
     };
+    home-manager.enable = true;
     secrets.enable = true;
     containers.enable = true;
     zram.enable = true;
   };
 
-  home-manager.users.aurel.aurel = {
-    shell.fish.enable = true;
-    programs = {
-      starship.enable = true;
-      chromium.enable = true;
-      ssh.enable = true;
-    };
+    programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+
+  system.stateVersion = "23.11";
 }
